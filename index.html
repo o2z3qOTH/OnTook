@@ -453,7 +453,7 @@ svg,symbol{overflow:visible}
     if(U.tab===0){
       h+='<div class="sec">내 프로필</div>'+
         '<button class="row" data-act="prof" data-id="me">'+av('me',54)+'<div class="txt"><div class="name">'+esc(S.me.name)+'</div></div>'+(S.me.status?'<div class="sbub">'+esc(S.me.status)+'</div>':'')+'</button>'+
-        '<div class="sec">즐겨찾기('+S.friends.length+'/12)</div>';
+        '<div class="sec">즐겨찾기('+S.friends.length+'/1)</div>';
       S.friends.forEach(function(f){h+='<button class="row" data-act="prof" data-id="'+f.id+'">'+av(f,54)+'<div class="txt"><div class="name">'+esc(f.name)+'</div></div></button>'});
       if(!S.friends.length)h+=emptyState('friend');
     }else if(U.tab===1){
@@ -869,7 +869,7 @@ svg,symbol{overflow:visible}
       },function(){toast('저장할 수 없는 환경입니다.')});
     },    add:function(el){
       var id=el.dataset.id;
-      if(S.friends.length>=12){toast('즐겨찾기가 가득 찼습니다.');return}
+      if(S.friends.length>=1){toast('즐겨찾기가 가득 찼습니다.');return}
       var r=S.recs.filter(function(x){return x.id===id})[0];if(!r)return;
       S.recs=S.recs.filter(function(x){return x.id!==id});
       S.friends.push({id:r.id,name:r.name,since:today()});
