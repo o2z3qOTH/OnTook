@@ -482,7 +482,7 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
       if(!S.notes.length)h+=emptyState('note');
       S.notes.forEach(function(n){
         var fresh=!n.read||U.fresh.indexOf(n.id)>=0;
-        h+='<div class="nrow'+(fresh?' new':'')+'"><svg viewBox="0 0 60 40" width="29" height="19"><use href="#i-mail"/></svg><span>'+esc(n.t)+'</span></div>';
+        h+='<div class="nrow'+(fresh?' new':'')+'"><svg viewBox="0 0 60 40" width="29" height="19"><use href="#i-mail"/></svg><span>'+esc(n.t.split('{me}').join(S.me.name))+'</span></div>';
       });
     }
     var vw=$('#view');vw.innerHTML=h;
@@ -673,7 +673,7 @@ body{-webkit-text-size-adjust:100%;overscroll-behavior:none}
     }
     if(st.k==='notify'){
       if(!alive())return false;
-      S.fav=S.fav||{};S.fav[id]=1;pg.i++;pg.j=0;S.notes.unshift({id:Date.now(),t:'빈나리님은 '+S.me.name+'님을 [67번째 하인]으로 보고 있습니다.',read:false});persist();if(!U.chat)render();favAlert(id);return true;
+      S.fav=S.fav||{};S.fav[id]=1;pg.i++;pg.j=0;S.notes.unshift({id:Date.now(),t:'빈나리님은 {me}님을 [67번째 하인]으로 보고 있습니다.',read:false});persist();if(!U.chat)render();favAlert(id);return true;
     }
     if(st.k==='line'){
       if(!alive())return false;
